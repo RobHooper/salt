@@ -1,7 +1,13 @@
 I am learning salt stack and documenting my progress. 
 
-This repo contains some example files.
-/salt = /srv/salt/
+To set up this repo for yourself..
+
+Install salt on a master and a minion
+
+Copy the ${repopath}/salt to ${master}/srv/salt/
+
+Set the appropriate roles grain data:
+ salt '*' grains.set  roles [webserver,rhnet]
 
 
 I've also created a wiki to cover the basic commands and setup. 

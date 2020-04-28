@@ -7,3 +7,4 @@ common_packages:
     - pkgs:
       - unzip
       - vim
+      - git

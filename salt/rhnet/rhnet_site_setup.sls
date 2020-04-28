@@ -1,8 +1,5 @@
-# vim: set shiftwidth=2 tabstop=2 softtabstop=-1 expandtab:
-
-install-npm:
-  pkg.installed:
-    - name: npm
+include:
+  - base_install.nodejs_package
 
 rh-user:
   user.present:
@@ -11,23 +8,26 @@ rh-user:
 #  - shell: /bin/bash
 #  - password: 
 
-#rh-site-source:
-#  git.latest:
-#    - name: https://github.com/bobalob3/robhooper-site.git
-#    - rev: master
-#    - target: /home/rh-user/public_html
+rh-site-source:
+  git.latest:
+    - name: https://github.com/bobalob3/robhooper.net.git
+    - rev: master
+    - target: /home/rh-user/public_html
+    - require:
+      - user: rh-user
+      - pkg: common_packages
+      - sls: base_install.nodejs_package
 
+rh-npm-install:
+  cmd.wait:
+    - name: npm install
+    - cwd: /home/rh-user/public_html
+    - watch:
+       - git: rh-site-source
 
-#rh-site-install:
-#  cmd.wait:
-#    - name: npm install
-#    - cwd: /home/rh-user/public_html
-#    - watch:
-#       - git: rh-site-source
-#
 #rh-site-build:
 #  cmd.wait:
 #    - name: npm run-script build
 #    - cwd: /home/rh-user/public_html
 #    - watch:
-#      - git: rh-site-install
+#      - cmd: rh-npm-install
