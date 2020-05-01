@@ -61,6 +61,9 @@ remove_grain_from_secondary:
     - arg:
       - hwaas
       - True
+    - require:
+      - salt: reset_grain_on_primary
+
 
 remove_secondary_from_loadbalancing:
   salt.state:
