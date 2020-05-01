@@ -9,7 +9,7 @@ set-new-minion-role:
 apply-states-on-new-minion:
   salt.state:
     - tgt: {{ pillar['target-minion'] }}
-    - sls: 
+    - highstate: True
     - require:
        - salt: set-new-minion-role
 
@@ -27,6 +27,7 @@ update-mine-data-from-new-minion:
     - require:
       - salt: refresh-pillar-on-new-minion
 
+# Not sure why this isn't erroring what is the load-balance.sls file?
 run-state-apply-on-webservers:
   salt.state:
     - tgt: roles:webserver
