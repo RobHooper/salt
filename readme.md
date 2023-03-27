@@ -4,10 +4,12 @@ To set up this repo for yourself..
 
 Install salt on a master and a minion
 
-Copy the ${repopath}/salt to ${master}/srv/salt/
+Copy the `${repopath}/salt to ${master}/srv/salt/`
 
 Set the appropriate roles grain data:
- salt '*' grains.set  roles [webserver,rhnet]
+```bash
+salt '*' grains.set  roles [webserver,rhnet]
+```
 
 
 I've also created a wiki to cover the basic commands and setup. 
